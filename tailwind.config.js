@@ -13,6 +13,7 @@ export default {
         "green-500": "#335B33",
         "green-600": "#1D341D",
         "purple": "#633B68",
+        "purple-alpha": "#633B6888",
       }
     },
   },
