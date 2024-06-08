@@ -1,11 +1,12 @@
 import { Calendar } from "./components/Calendar";
 import { Counter } from "./components/Counter";
 import { Title } from "./components/Title";
-import { getNumberOfDays, generateDays, dayArr } from "./Utils";
+import { getNumberOfDays, getFirstDay, generateDays, dayArr } from "./Utils";
 
 function App() {
-  const daysInMonth = getNumberOfDays(2024, 6);
-  const calendarArr = generateDays(daysInMonth);
+  const daysInMonth = getNumberOfDays(6, 2024);
+  const firstDay = getFirstDay(6, 2024);
+  const calendarArr = generateDays(daysInMonth, firstDay);
 
   return (
     <>
@@ -13,7 +14,7 @@ function App() {
       <Counter />
       <Calendar
         dayArr={dayArr}
-        daysInMonth={daysInMonth}
+        // daysInMonth={daysInMonth}
         calendarArr={calendarArr}
       />
     </>
