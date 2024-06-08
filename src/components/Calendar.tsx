@@ -11,7 +11,7 @@ export function Calendar({ dayArr, daysInMonth, calendarArr }: CalendarProps) {
       {dayArr.map(day => (
         <div 
           key={day}
-          className="flex flex-col items-center justify-center w-20 px-4 py-2 bg-pink-500 rounded-md text-neutral-light"
+          className="flex flex-col items-center justify-center w-20 px-4 py-2 rounded-md bg-neutral-700 text-neutral-light"
         >
           {day}
         </div>
