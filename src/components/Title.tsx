@@ -1,7 +1,7 @@
 export function Title() {
   return (
     <header className="py-10 text-center">
-      <h1 className="mb-10 text-3xl font-extrabold text-green-300">
+      <h1 className="inline-block mb-10 text-3xl font-extrabold text-transparent bg-gradient-to-br from-orange via-bright-salmon to-dusty-pink bg-clip-text">
         Step Counter
       </h1>
       <p className="text-neutral-200">Just pick a timeframe & overall goal.</p>

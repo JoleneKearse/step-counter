@@ -9,7 +9,7 @@ function App() {
   const calendarArr = generateDays(daysInMonth, firstDay);
 
   return (
-    <>
+    <main className="flex flex-col items-center justify-center gap-10">
       <Title />
       <Counter />
       <Calendar
@@ -17,7 +17,7 @@ function App() {
         // daysInMonth={daysInMonth}
         calendarArr={calendarArr}
       />
-    </>
+    </main>
   );
 }
 

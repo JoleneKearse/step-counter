@@ -15,8 +15,6 @@ export function generateDays(days: number, firstDay: number): number[] {
     const intitial = Array.from({ length: days }, (_, i) => i + 1);
     return Array(firstDay).fill(0).concat(intitial);
   }
-  
-  
 }
 
 export const dayArr = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
