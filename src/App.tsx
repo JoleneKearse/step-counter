@@ -35,7 +35,7 @@ function App() {
   return (
     <main className="flex flex-col items-center justify-center gap-10">
       <Title />
-      {!loggedIn && <Login />}
+      {!loggedIn && <Login auth={auth} provider={provider} />}
       <Counter />
       <Calendar
         dayArr={dayArr}
