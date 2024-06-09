@@ -11,7 +11,7 @@ export function Counter() {
         className="w-3/5 px-4 py-1 font-bold text-center rounded-md text-neutral-800 bg-neutral-200 md:w-2/5 lg:w-1/3"
       />
       <button
-        className="inline-block px-3 py-1 rounded-md w-fit bg-gradient-to-br from-orange via-bright-salmon to-dusty-pink hover:bg-gradient-to-tl"
+        className="inline-block px-3 py-1 border border-4 rounded-md border-neutral-900 w-fit bg-gradient-to-br from-orange via-bright-salmon to-dusty-pink hover:bg-gradient-to-tl"
       >
         Record
       </button>
