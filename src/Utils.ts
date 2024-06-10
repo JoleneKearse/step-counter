@@ -1,3 +1,7 @@
+export function getCurrentDate() {
+  return new Date();
+}
+
 export function getNumberOfDays(month: number, year: number): number {
   return new Date(year, month, 0).getDate();
   

@@ -1,19 +1,34 @@
+import { Login } from "./components/Login";
+import { Goals } from "./components/Goals";
 import { Calendar } from "./components/Calendar";
 import { Counter } from "./components/Counter";
 import { Title } from "./components/Title";
-import { getNumberOfDays, getFirstDay, generateDays, dayArr } from "./Utils";
+import {
+  getCurrentDate,
+  getNumberOfDays,
+  getFirstDay,
+  generateDays,
+  dayArr,
+} from "./Utils";
 import { config } from "./config/config";
 
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signOut,
+} from "firebase/auth";
 import { useState } from "react";
-import { Login } from "./components/Login";
-
 
 function App() {
   // app variables
   const [loggedIn, setLoggedIn] = useState(false);
-  
+  const currentDate = getCurrentDate();
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1;
+  const [goals, setGoals] = useState<object>(false);
+
   // auth
   const app = initializeApp(config.firebaseConfig);
   const auth = getAuth(app);
@@ -25,17 +40,18 @@ function App() {
     } else {
       setLoggedIn(false);
     }
-  })
-  
+  });
+
   // generate calendar
-  const daysInMonth = getNumberOfDays(6, 2024);
-  const firstDay = getFirstDay(6, 2024);
+  const daysInMonth = getNumberOfDays(month, year);
+  const firstDay = getFirstDay(month, year);
   const calendarArr = generateDays(daysInMonth, firstDay);
 
   return (
     <main className="flex flex-col items-center justify-center gap-10">
       <Title />
       {!loggedIn && <Login auth={auth} provider={provider} />}
+      {!goals && <Goals goals={goals} setGoals={setGoals} />}
       <Counter />
       <Calendar
         dayArr={dayArr}

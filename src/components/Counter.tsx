@@ -2,7 +2,7 @@ export function Counter() {
   return (
     <form className="flex flex-col items-center gap-6 p-10 rounded-full w-fit bg-neutral-800 md:gap-8 lg:gap-14">
       <label htmlFor="daily-steps" className="leading-5 text-center text-neutral-200">
-        How many steps<br></br> did you take today?
+        How many steps<br></br> did you conquer today?
       </label>
       <input
         type="number"
