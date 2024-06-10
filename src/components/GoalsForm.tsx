@@ -1,23 +1,16 @@
 import { FormEvent, useRef } from "react";
+import { Goals } from "../types/types";
 
 type GoalsProps = {
-  goals: {
-    startDate: Date,
-    endDate: Date,
-    stepGoal: number,
-  },
-  setGoals: (goals: object) => void,
+  goals: Goals | null,
+  setGoals: (goals: Goals) => void,
 };
 
 export function GoalsForm({ goals, setGoals }: GoalsProps) {
   const startRef = useRef<HTMLInputElement>(null);
   const endRef = useRef<HTMLInputElement>(null);
   const stepRef = useRef<HTMLInputElement>(null);
-  // const goalObj = {
-  //   startDate: ,
-  //   endDate: null,
-  //   stepGoal: 0,
-  // }
+  
   // const handleSubmit = (event: FormEvent) => {
   //   event.preventDefault();
   //   if (startRef !== null) goalObj.startDate = startRef.current.value
