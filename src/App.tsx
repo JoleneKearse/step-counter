@@ -1,5 +1,5 @@
 import { Login } from "./components/Login";
-import { Goals } from "./components/Goals";
+import { GoalsForm } from "./components/GoalsForm";
 import { Calendar } from "./components/Calendar";
 import { Counter } from "./components/Counter";
 import { Title } from "./components/Title";
@@ -11,6 +11,7 @@ import {
   dayArr,
 } from "./Utils";
 import { config } from "./config/config";
+import { Goals } from "./types/types";
 
 import { initializeApp } from "firebase/app";
 import {
@@ -27,7 +28,7 @@ function App() {
   const currentDate = getCurrentDate();
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth() + 1;
-  const [goals, setGoals] = useState<object>(false);
+  const [goals, setGoals] = useState<Goals | null>(null);
 
   // auth
   const app = initializeApp(config.firebaseConfig);
@@ -51,7 +52,7 @@ function App() {
     <main className="flex flex-col items-center justify-center gap-10">
       <Title />
       {!loggedIn && <Login auth={auth} provider={provider} />}
-      {!goals && <Goals goals={goals} setGoals={setGoals} />}
+      {!goals && <GoalsForm goals={goals} setGoals={setGoals} />}
       <Counter />
       <Calendar
         dayArr={dayArr}

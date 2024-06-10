@@ -9,7 +9,7 @@ type GoalsProps = {
   setGoals: (goals: object) => void,
 };
 
-export function Goals({ goals, setGoals }: GoalsProps) {
+export function GoalsForm({ goals, setGoals }: GoalsProps) {
   const startRef = useRef<HTMLInputElement>(null);
   const endRef = useRef<HTMLInputElement>(null);
   const stepRef = useRef<HTMLInputElement>(null);
