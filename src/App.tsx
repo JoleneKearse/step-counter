@@ -1,8 +1,11 @@
+import { useState } from "react";
+
 import { Login } from "./components/Login";
 import { GoalsForm } from "./components/GoalsForm";
 import { Calendar } from "./components/Calendar";
 import { Counter } from "./components/Counter";
 import { Title } from "./components/Title";
+
 import {
   getCurrentDate,
   getNumberOfDays,
@@ -10,17 +13,13 @@ import {
   generateDays,
   dayArr,
 } from "./Utils";
+
 import { config } from "./config/config";
+
 import { Goals } from "./types/types";
 
 import { initializeApp } from "firebase/app";
-import {
-  getAuth,
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  signOut,
-} from "firebase/auth";
-import { useState } from "react";
+import { getAuth, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 
 function App() {
   // app variables
@@ -52,7 +51,7 @@ function App() {
     <main className="flex flex-col items-center justify-center gap-10">
       <Title />
       {!loggedIn && <Login auth={auth} provider={provider} />}
-      {!goals && <GoalsForm goals={goals} setGoals={setGoals} />}
+      {!goals && <>{<GoalsForm setGoals={setGoals} />}</>}
       <Counter />
       <Calendar
         dayArr={dayArr}
