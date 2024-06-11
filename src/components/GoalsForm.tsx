@@ -22,20 +22,20 @@ export function GoalsForm({ setGoals }: GoalsProps) {
     const stepGoal = stepRef.current?.value
       ? Number(stepRef.current.value)
       : null;
-
+    
     if (startDate && endDate && stepGoal) {
       const goalObj: Goals = {
         startDate,
         endDate,
         stepGoal,
       };
+
       setGoals(goalObj);
-      console.log(goalObj);
     }
   };
 
   return (
-    <form onSubmit={() => handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div className="flex flex-col items-center justify-center gap-4 mb-4">
         <label
           htmlFor="startDate"

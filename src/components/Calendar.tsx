@@ -14,11 +14,11 @@ export function Calendar({ dayArr, calendarArr }: CalendarProps) {
           {day}
         </div>
       ))}
-      {calendarArr.map((day) => (
+      {calendarArr.map((day, index) => (
         <div
-          key={day}
+          key={index}
           className={`flex flex-col items-center justify-center px-2 py-2 rounded-md ${
-            day === 0 ? 'bg-transparent' : 'bg-purple-alpha text-neutral-600'
+            day === 0 ? "bg-transparent" : "bg-purple-alpha text-neutral-600"
           }`}
         >
           <p className="text-neutral-light">{day === 0 ? " " : day}</p>

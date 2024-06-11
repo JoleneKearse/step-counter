@@ -47,17 +47,22 @@ function App() {
   const firstDay = getFirstDay(month, year);
   const calendarArr = generateDays(daysInMonth, firstDay);
 
+
   return (
     <main className="flex flex-col items-center justify-center gap-10">
       <Title />
       {!loggedIn && <Login auth={auth} provider={provider} />}
       {!goals && <>{<GoalsForm setGoals={setGoals} />}</>}
-      <Counter />
-      <Calendar
-        dayArr={dayArr}
-        // daysInMonth={daysInMonth}
-        calendarArr={calendarArr}
-      />
+      {goals && (
+        <>
+          <Counter />
+          <Calendar
+            dayArr={dayArr}
+            // daysInMonth={daysInMonth}
+            calendarArr={calendarArr}
+          />
+        </>
+      )}
     </main>
   );
 }
