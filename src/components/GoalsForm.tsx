@@ -32,7 +32,7 @@ export function GoalsForm({ setGoals }: GoalsProps) {
         stepGoal,
         unitGoal,
       };
-
+      console.log(goalObj);
       setGoals(goalObj);
     }
   };
@@ -52,6 +52,7 @@ export function GoalsForm({ setGoals }: GoalsProps) {
           name="startDate"
           id="startDate"
           className="px-2 py-1 font-bold rounded-md bg-neutral-200 text-neutral-800"
+          required
         />
       </div>
       <div className="flex flex-col items-center gap-4 mb-4">
@@ -67,6 +68,7 @@ export function GoalsForm({ setGoals }: GoalsProps) {
           name="endDate"
           id="endDate"
           className="px-2 py-1 font-bold rounded-md bg-neutral-200 text-neutral-800"
+          required
         />
       </div>
       <div className="flex flex-col items-center gap-4 mb-4">
@@ -82,6 +84,7 @@ export function GoalsForm({ setGoals }: GoalsProps) {
           name="stepGoal"
           id="stepGoal"
           className="w-3/5 px-4 py-1 font-bold text-center rounded-md text-neutral-800 bg-neutral-200 md:w-2/5 lg:w-1/3"
+          required
         />
       </div>
       <label
@@ -92,7 +95,8 @@ export function GoalsForm({ setGoals }: GoalsProps) {
         <select 
           name="units" 
           id="units" 
-          ref={unitRef} 
+          ref={unitRef}
+          required 
           className="px-4 py-1 font-bold rounded-md bg-neutral-200 text-neutral-800"
         >
           <option
