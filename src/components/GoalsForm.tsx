@@ -32,13 +32,15 @@ export function GoalsForm({ setGoals }: GoalsProps) {
         stepGoal,
         unitGoal,
       };
-      console.log(goalObj);
       setGoals(goalObj);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form 
+      onSubmit={handleSubmit}
+      className="flex flex-col items-center"
+    >
       <div className="flex flex-col items-center justify-center gap-4 mb-4">
         <label
           htmlFor="startDate"
@@ -92,11 +94,11 @@ export function GoalsForm({ setGoals }: GoalsProps) {
         className="flex flex-col items-center gap-4 mb-4 leading-5 text-center text-neutral-200"
       >
         Measurement
-        <select 
-          name="units" 
-          id="units" 
+        <select
+          name="units"
+          id="units"
           ref={unitRef}
-          required 
+          required
           className="px-4 py-1 font-bold rounded-md bg-neutral-200 text-neutral-800"
         >
           <option
@@ -105,17 +107,10 @@ export function GoalsForm({ setGoals }: GoalsProps) {
           >
             --
           </option>
-          <option
-            value="km"
-            defaultValue="km"
-            className="font-bold"
-          >
+          <option value="km" defaultValue="km" className="font-bold">
             km
           </option>
-          <option
-            value="mi"
-            className="font-bold"
-          >
+          <option value="mi" className="font-bold">
             mi
           </option>
         </select>
