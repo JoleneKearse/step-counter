@@ -34,6 +34,9 @@ function App() {
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
 
+  // firestore database
+  // const firestore = getFirestore();
+
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setLoggedIn(true);
@@ -46,7 +49,6 @@ function App() {
   const daysInMonth = getNumberOfDays(month, year);
   const firstDay = getFirstDay(month, year);
   const calendarArr = generateDays(daysInMonth, firstDay);
-
 
   return (
     <main className="flex flex-col items-center justify-center gap-10">

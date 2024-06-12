@@ -1,4 +1,5 @@
 import { signInWithPopup, Auth, GoogleAuthProvider } from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 type LoginProps = {
   auth: Auth;
@@ -6,6 +7,22 @@ type LoginProps = {
 };
 
 export function Login({ auth, provider }: LoginProps) {
+  const firestore = getFirestore();
+  const handleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      if (user) {
+        const userRef = doc(firestore, `users/${user.uid}`);
+        await setDoc(userRef, {
+          email: user.email,
+        }, { merge: true })
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return (
     <section className="flex flex-col items-center gap-2 px-4 -mt-5">
       <p className="text-neutral-200">
@@ -24,9 +41,7 @@ export function Login({ auth, provider }: LoginProps) {
       <img src="/logo.svg" alt="sneakers walking" className="-mt-5" />
       <button
         className="inline-block px-3 py-1 border border-4 rounded-md border-neutral-900 w-fit bg-gradient-to-br from-orange via-bright-salmon to-dusty-pink hover:bg-gradient-to-tl"
-        onClick={() => {
-          signInWithPopup(auth, provider);
-        }}
+        onClick={handleLogin}
       >
         Login with Google!
       </button>
