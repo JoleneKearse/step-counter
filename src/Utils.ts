@@ -21,4 +21,9 @@ export function generateDays(days: number, firstDay: number): number[] {
   }
 }
 
+export function convertMiToKm(mi: number): number {
+  const KMS_IN_MILES = 1.609344;
+  return mi * KMS_IN_MILES;
+}
+
 export const dayArr = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];

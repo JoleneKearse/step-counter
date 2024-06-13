@@ -16,7 +16,7 @@ import {
 
 import { config } from "./config/config";
 
-import { Goals } from "./types/types";
+import { Stats, Goals } from "./types/types";
 
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
@@ -24,9 +24,13 @@ import { getAuth, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 function App() {
   // app variables
   const [loggedIn, setLoggedIn] = useState(false);
+  // I do want currentDate to let Count comp to know where to add the steps
   const currentDate = getCurrentDate();
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth() + 1;
+  // set stats
+  const [stats, setStats] = useState<Stats | null>(null);
+  // set current challenge goals
   const [goals, setGoals] = useState<Goals | null>(null);
 
   // auth
