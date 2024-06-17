@@ -46,16 +46,18 @@ function App() {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setLoggedIn(true);
+      console.log(loggedIn);
     } else {
       setLoggedIn(false);
     }
   });
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setLoggedIn(!!user);
       setLoading(false);
     });
+    if (!loggedIn) return unsubscribe;
   }, [auth]);
 
   if (loading) {
@@ -76,7 +78,13 @@ function App() {
           path="/"
           element={
             loggedIn ? (
-              <HomePage dayArr={dayArr} calendarArr={calendarArr}/>
+              <HomePage
+                dayArr={dayArr}
+                calendarArr={calendarArr}
+                auth={auth}
+                setLoggedIn={setLoggedIn}
+                loggedIn={loggedIn}
+              />
             ) : (
               <Navigate to="/login" />
             )
@@ -84,7 +92,7 @@ function App() {
         />
         <Route
           path="/login"
-          element={<LandingPage auth={auth} provider={provider} />}
+          element={<LandingPage auth={auth} provider={provider} loggedIn={loggedIn} dayArr={dayArr} calendarArr={calendarArr} setLoggedIn={setLoggedIn} />}
         />
       </Routes>
     </main>

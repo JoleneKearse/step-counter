@@ -1,5 +1,6 @@
 import { signInWithPopup, Auth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { Navigate } from "react-router-dom";
 
 type LoginProps = {
   auth: Auth;
@@ -13,14 +14,18 @@ export function Login({ auth, provider }: LoginProps) {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
 
+      console.log("login success");
+
       if (user) {
         const userRef = doc(firestore, `users/${user.uid}`);
         await setDoc(userRef, {
           email: user.email,
         }, { merge: true })
+        
       }
     } catch (err) {
       console.log(err);
+      // TODO: Display error message to user
     }
   }
   return (
